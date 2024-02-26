@@ -10,9 +10,9 @@ Nele há vários livros sobre tecnologia em diversas áreas diferentes! Venha de
 
 * HTML
 
-*CSS
+* CSS
 
-*Flexbox
+* Flexbox
 
 ### Totalmente responsivo:
 ![imagem-versao-tablet](img/versao-tablet.png)
