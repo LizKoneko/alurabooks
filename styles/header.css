@@ -1,0 +1,152 @@
+.cabecalho__menu-hamburguer{
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/Menu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+/* esses são combinadores CSS (o til e o maior que) */
+.container__botao:checked~.container__rotulo>.cabecalho__menu-hamburguer{
+    background-image: url("../img/Menu\ Aberto.svg");
+}
+.container__botao:checked~.container__rotulo{
+    background: var(--azul-degrade);
+}
+
+.cabecalho{
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container__botao{
+    display: none;
+}
+
+.container__imagem{
+    padding: 1em;
+}
+
+.lista-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* o absolute fez a lista ficar em cima do hamburguer, enquanto o top fez dar um espaço, ficando embaixo do hamburguer. Para isso colocou o 'relative' na classe pai, para que pudesse ser posicionado em relação a ele */
+    width: 70vw;
+}
+
+.container__botao:checked~.lista-menu{
+    display: block;
+}
+/* o checked é uma pseudoclasse que detecta se tá preenchida a checkbox, o til é um combinador css, que procura um outro elemento (o que está marcado depois) e vai aplicar o que foi colocado se a condição for atingida, que no caso é o display block. Age parecido como o JS faria*/
+
+.lista-menu__titulo, .lista-menu__item{
+    padding: 1em;
+    background: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link{
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* o back-clip prende a cor onde tem texto, e os webkit é pra funcionar em outros tipos de navegadores. Essa de baixo faz tudo estar em letra maiúscula */
+    text-transform: uppercase;
+
+}
+
+.container__titulo, .opcoes, .container__texto{
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .container__titulo, .container__titulo--negrito{
+        font-family: var(--fonte-secundaria);
+        font-size: 30px;
+    }
+
+    .container__titulo{
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito{
+        font-weight: 700;
+    }
+
+    .opcoes{
+        display: flex;
+    }
+
+    .opcoes__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente, .cabecalho__menu-hamburguer, .opcoes__botao{
+        display: none;
+    }
+
+    .opcoes__botao:checked~.lista-menu{
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item{
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    
+    .opcoes__item{
+        padding: 2em 1em;
+        text-transform: uppercase;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover>.lista-menu__link{
+        -webkit-text-fill-color: var(--branco);
+        /* anteriormente usamos ele para as letras serem transparentes e aplicarem a cor degradê, por isso precisamos usar ele de novo para fazer voltar a cor */
+        text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .cabecalho{
+        padding: 0 2em;
+    }
+
+    .container__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+        padding-left: 1.5em;
+    }
+
+    .container__texto{
+        display: block;
+    }
+
+    .opcoes{
+        margin: 0 auto 0 3em;
+        /* empurrou tudo pra esquerda, pois como é flex-item e quando a gente coloca uma margin com o valor auto, ele tenta preencher todo o espaço com a margem  */
+    }
+}
